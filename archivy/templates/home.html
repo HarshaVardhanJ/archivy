@@ -5,7 +5,7 @@
 	<input type="text" id="searchBar">
 	<ul id="searchHits">
 	{% if lunr %}
-  		<script src="https://unpkg.com/lunr/lunr.js"></script>
+  		<script src="https://unpkg.com/lunr/lunr.min.js"></script>
 	{% endif %}
 {% endif %}
 	
@@ -21,7 +21,9 @@
 {% set i = namespace(value=0) %}
 {{ draw_dir(dataobjs, 0, 1) }}
 
-{% include "markdown-parser.html" %}
+{% if elasticsearch %}
+  {% include "markdown-parser.html" %}
+{% endif %}
 <script>
   // search functionality
   {% if search_enabled %}  
